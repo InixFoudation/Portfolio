@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Data & Cyber Sécurité</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #c9a962;
+            --accent-light: #e8d5a3;
+            --text: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+            background: rgba(255,255,255,0.05);
+            padding: 0.3rem;
+            border-radius: 40px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.4rem 0.7rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--accent);
+        }
+
+        .btn-stage {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-stage:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 98, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 98, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-location span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+            border-top: 1px solid rgba(201, 169, 98, 0.2);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .vision-icon {
+            font-size: 4rem;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .vision-quote {
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .vision-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .vision-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .rsreu-conf-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201, 169, 98, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .rsreu-conf-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .about {
+            background: var(--secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--accent);
+            z-index: 0;
+        }
+
+        .about-image-inner {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2a 100%);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-image-inner .avatar-emoji {
+            font-size: 5rem;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .signature-quote {
+            font-style: italic;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #c0c0c0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 169, 98, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .exp-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .exp-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .exp-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .exp-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .exp-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exp-card li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .exp-card li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-3.5px);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-institution {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--secondary);
+            border: 1px solid rgba(201, 169, 98, 0.1);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(201, 169, 98, 0.1);
+            color: var(--accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pub-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(10, 10, 10, 0.5);
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .pub-item:hover {
+            background: rgba(10, 10, 10, 0.8);
+            transform: translateX(10px);
+        }
+
+        .pub-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 80px;
+        }
+
+        .pub-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .pub-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-name {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        .skill-dot.active {
+            opacity: 1;
+        }
+
+        .contact {
+            background: var(--gradient);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item span {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .lang-badge {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .lang-badge.native {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .contact-telegram {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1e88e5;
+            padding: 0.8rem 2rem;
+            border-radius: 0;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .contact-telegram:hover {
+            background: #0b6bc0;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(201, 169, 98, 0.1);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .nav-actions {
+                justify-content: center;
+            }
+            .vision-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .hero-location {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            .pub-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">W.P. FONKOU</div>
+            <ul class="nav-links">
+                <li><a href="#vision" data-key="nav_vision">Vision</a></li>
+                <li><a href="#about" data-key="nav_about">Profil</a></li>
+                <li><a href="#experience" data-key="nav_experience">Expérience</a></li>
+                <li><a href="#education" data-key="nav_education">Formation</a></li>
+                <li><a href="#research" data-key="nav_research">Recherche</a></li>
+                <li><a href="#contact" data-key="nav_contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                </div>
+                <a href="#contact" class="btn-stage" data-key="stage_btn">🎯 Stage / Emploi</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge" data-key="hero_badge">Disponible pour Stage Académique / Professionnel</div>
+            <h1>William Patrick <span>FONKOU</span></h1>
+            <p class="hero-subtitle" data-key="hero_subtitle">Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.</p>
+            <div class="hero-location">
+                <span>📍 <span data-key="location1">Cameroun → Russie → Amérique du Nord</span></span>
+                <span>🎓 <span data-key="location2">Master (RSREU)</span></span>
+                <span>💼 <span data-key="location3">7+ ans d'expérience</span></span>
+            </div>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary" data-key="contact_btn">📩 Me Contacter</a>
+                <a href="https://github.com/williamfonkou" class="btn btn-outline" target="_blank">💻 GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Data & Security : ma philosophie (avec lien RSREU) -->
+    <section id="vision" class="vision-section">
+        <div class="vision-grid" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="vision-icon">🔐</div>
+            <div class="vision-text">
+                <div class="vision-quote" data-key="vision_quote">"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."</div>
+                <p data-key="vision_text">Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.</p>
+                <div class="vision-tags">
+                    <span class="tag">Data Analytics</span>
+                    <span class="tag">Zero-Trust</span>
+                    <span class="tag">AIOps</span>
+                    <span class="tag">Kubernetes Security</span>
+                </div>
+                <!-- Lien officiel RSREU vers l'article sur le forum STNO-2026 -->
+                <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" data-key="rsreu_link">
+                    <i class="rsreu-icon">📄</i> Confirmation officielle : Présentation au forum STNO-2026 (RSREU)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header">
+            <div class="section-label" data-key="about_label">Data & Security Philosophy</div>
+            <h2 class="section-title" data-key="about_title">À Propos</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-image-inner"><div class="avatar-emoji">👨‍💻</div></div>
+            </div>
+            <div class="about-content">
+                <h3 data-key="about_subtitle">De la donnée brute à l'immunité numérique</h3>
+                <p data-key="about_p1"><strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.</p>
+                <p data-key="about_p2">Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.</p>
+                <div class="signature-quote" data-key="quote">« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »</div>
+                <p data-key="about_p3"><strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.</p>
+                <div class="about-stats">
+                    <div class="stat"><div class="stat-number">7+</div><div class="stat-label" data-key="stat1">Années d'Expérience</div></div>
+                    <div class="stat"><div class="stat-number">2</div><div class="stat-label" data-key="stat2">Publications</div></div>
+                    <div class="stat"><div class="stat-number">4</div><div class="stat-label" data-key="stat3">Diplômes</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header">
+            <div class="section-label" data-key="exp_label">Cross-domain expertise & pedagogy</div>
+            <h2 class="section-title" data-key="exp_title">Expérience professionnelle</h2>
+        </div>
+        <div class="exp-grid">
+            <div class="exp-card"><h3>📊 Associate M&E Assistant</h3><div class="exp-date">2022 – 2024 | GEORGETOWN, Garoua-Boulai</div><ul><li>Validated 500+ field dossiers monthly</li><li>Automated reporting workflows → 30-40% time gain</li><li>Designed KPI dashboards for executive decisions</li></ul></div>
+            <div class="exp-card"><h3>🗄️ Data Manager & Technical Support</h3><div class="exp-date">2019 – 2022 | OMNIUM SERVICE, Douala</div><ul><li>Managed 200+ asset inventory with 99.5% accuracy</li><li>Implemented QA gates preventing 95% non-conforming docs</li><li>Reduced equipment downtime by 20%</li></ul></div>
+            <div class="exp-card"><h3>💻 IT Manager & Admin Assistant</h3><div class="exp-date">2017 – 2021 | ARERC SARL, Bafoussam</div><ul><li>Maintained 50+ workstations & networks (99.8% uptime)</li><li>Trained 30+ non-technical staff on data best practices</li><li>Full asset lifecycle documentation</li></ul></div>
+            <div class="exp-card"><h3>📚 ICT Educator & Technical Instructor</h3><div class="exp-date">2014 – 2021 | Ministry of Secondary Education, Cameroon</div><ul><li>7+ years teaching ICT & computer science</li><li>Trained 200+ learners in database fundamentals & MS Office</li><li>Developed pedagogical materials bridging theory and practice</li></ul></div>
+        </div>
+    </section>
+
+    <section id="education"><div class="section-header"><div class="section-label" data-key="edu_label">Parcours Académique</div><h2 class="section-title" data-key="edu_title">Formation</h2></div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-date">2025 - Présent</div><div class="timeline-title" data-key="edu1_title">Master en Systèmes d'Information</div><div class="timeline-institution" data-key="edu1_inst">RSREU, Russie</div></div>
+            <div class="timeline-item"><div class="timeline-date">2022</div><div class="timeline-title" data-key="edu2_title">Licence en Gestion de Projets IT</div><div class="timeline-institution" data-key="edu2_inst">ENSET, Douala, Cameroun</div></div>
+            <div class="timeline-item"><div class="timeline-date">2020</div><div class="timeline-title" data-key="edu3_title">DIPET 1 - Professeur TIC</div><div class="timeline-institution" data-key="edu3_inst">Université de Bamenda, Cameroun</div></div>
+            <div class="timeline-item"><div class="timeline-date">2014</div><div class="timeline-title" data-key="edu4_title">BTS en Informatique de Gestion</div><div class="timeline-institution" data-key="edu4_inst">IUT Bandjoun, Cameroun</div></div>
+        </div>
+    </section>
+
+    <section id="research" class="research"><div class="section-header"><div class="section-label" data-key="research_label">Domaines d'Expertise</div><h2 class="section-title" data-key="research_title">Recherche & Spécialisations</h2></div>
+        <div class="research-grid" id="research-grid"></div>
+        <!-- Lien ajouté également ici pour renforcer la crédibilité académique -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" data-key="rsreu_link2" style="background: rgba(201, 169, 98, 0.1);">📄 Conférence STNO-2026 : présentation de "Autonomic Shield" (RSREU)</a>
+        </div>
+    </section>
+
+    <section id="publications" class="publications"><div class="section-header"><div class="section-label" data-key="pubs_label">Contributions Scientifiques</div><h2 class="section-title" data-key="pubs_title">Publications</h2></div>
+        <div class="pub-list" id="pub-list"></div>
+    </section>
+
+    <section id="skills"><div class="section-header"><div class="section-label" data-key="skills_label">Compétences Techniques</div><h2 class="section-title" data-key="skills_title">Expertise</h2></div>
+        <div class="skills-grid" id="skills-grid"></div>
+    </section>
+
+    <section id="contact" class="contact"><div class="contact-content"><div class="section-label" data-key="contact_label">Opportunités</div><h2 data-key="contact_title">Disponible pour entretien</h2>
+        <p data-key="contact_desc">Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord.</p>
+        <div class="contact-info"><div class="contact-item"><span>📧</span><div><div style="color: var(--text-muted);">Email</div><div>william.fonkou@rsreu.ru</div></div></div>
+        <div class="contact-item"><span>📱</span><div><div style="color: var(--text-muted);">Téléphone</div><div>+7 996 092 1756</div></div></div>
+        <div class="contact-item"><span>📱</span><div><div style="color: var(--text-muted);">Telegram</div><div>@William_FONKOU</div></div></div></div>
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <a href="https://t.me/William_FONKOU" target="_blank" class="contact-telegram">📱 Me contacter sur Telegram</a>
+            <a href="mailto:william.fonkou@rsreu.ru" class="btn btn-primary">✉️ Envoyer un email</a>
+        </div>
+        <div class="languages"><div class="lang-badge native">🇫🇷 Français - Natif</div><div class="lang-badge native">🇬🇧 English - Native</div><div class="lang-badge">🇷🇺 Русский - Средний (B1+)</div></div>
+    </div></section>
+
+    <footer><p>© 2025 William Patrick FONKOU — Portfolio académique et professionnel</p><p style="margin-top: 0.5rem; font-size: 0.75rem;">Hébergé sur GitHub Pages • Data & Security for resilient infrastructure</p></footer>
+
+    <script>
+        const translations = {
+            fr: { nav_vision: "Vision", nav_about: "Profil", nav_experience: "Expérience", nav_education: "Formation", nav_research: "Recherche", nav_contact: "Contact", stage_btn: "🎯 Stage / Emploi", hero_badge: "Disponible pour Stage Académique / Professionnel", hero_subtitle: "Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.", location1: "Cameroun → Russie → Amérique du Nord", location2: "Master (RSREU)", location3: "7+ ans d'expérience", contact_btn: "📩 Me Contacter", vision_quote: '"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."', vision_text: "Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.", rsreu_link: "📄 Confirmation officielle : Présentation au forum STNO-2026 (RSREU)", rsreu_link2: "📄 Conférence STNO-2026 : présentation de 'Autonomic Shield' (RSREU)", about_label: "Data & Security Philosophy", about_title: "À Propos", about_subtitle: "De la donnée brute à l'immunité numérique", about_p1: "<strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.", about_p2: "Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.", quote: "« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »", about_p3: "<strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.", stat1: "Années d'Expérience", stat2: "Publications", stat3: "Diplômes", exp_label: "Cross-domain expertise & pedagogy", exp_title: "Expérience professionnelle", edu_label: "Parcours Académique", edu_title: "Formation", edu1_title: "Master en Systèmes d'Information", edu1_inst: "RSREU, Russie", edu2_title: "Licence en Gestion de Projets IT", edu2_inst: "ENSET, Douala, Cameroun", edu3_title: "DIPET 1 - Professeur TIC", edu3_inst: "Université de Bamenda, Cameroun", edu4_title: "BTS en Informatique de Gestion", edu4_inst: "IUT Bandjoun, Cameroun", research_label: "Domaines d'Expertise", research_title: "Recherche & Spécialisations", pubs_label: "Contributions Scientifiques", pubs_title: "Publications", skills_label: "Compétences Techniques", skills_title: "Expertise", contact_label: "Opportunités", contact_title: "Disponible pour entretien", contact_desc: "Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord." },
+            en: { nav_vision: "Vision", nav_about: "Profile", nav_experience: "Experience", nav_education: "Education", nav_research: "Research", nav_contact: "Contact", stage_btn: "🎯 Internship / Job", hero_badge: "Available for Academic / Professional Internship", hero_subtitle: "Information Systems Researcher & Engineer. Specialist in Autonomous Cybersecurity, Cloud Computing & AIOps.", location1: "Cameroon → Russia → North America", location2: "Master's (RSREU)", location3: "7+ years experience", contact_btn: "📩 Contact Me", vision_quote: '"In a world where data is the new oil, security must be proactive, intelligent, and autonomous."', vision_text: "My expertise combines advanced data analytics with AI-driven autonomous security systems. I am currently researching Zero-Trust architectures and hybrid cloud Kubernetes environments.", rsreu_link: "📄 Official confirmation: Presentation at STNO-2026 forum (RSREU)", rsreu_link2: "📄 STNO-2026 Conference: 'Autonomic Shield' presentation (RSREU)", about_label: "Data & Security Philosophy", about_title: "About", about_subtitle: "From raw data to digital immunity", about_p1: "<strong>William Patrick FONKOU</strong> — detail-oriented professional with 7+ years of cross-functional expertise in data governance, operational coordination, and IT support.", about_p2: "Currently pursuing a Master's at Ryazan State Radio Engineering University (RSREU), I am developing an innovative thesis on <strong>AIOps-based Zero-Trust frameworks</strong>.", quote: "« Security should not be a constraint, but an emergent behavior of the infrastructure itself. »", about_p3: "<strong>🎯 Actively seeking an internship in Canada / North America</strong> in cybersecurity, data engineering, or cloud infrastructure.", stat1: "Years Experience", stat2: "Publications", stat3: "Degrees", exp_label: "Cross-domain expertise & pedagogy", exp_title: "Professional Experience", edu_label: "Academic Path", edu_title: "Education", edu1_title: "Master's in Information Systems", edu1_inst: "RSREU, Russia", edu2_title: "Bachelor's in IT Project Management", edu2_inst: "ENSET, Douala, Cameroon", edu3_title: "DIPET 1 - ICT Teacher", edu3_inst: "University of Bamenda, Cameroon", edu4_title: "BTS in IT & Business Data Management", edu4_inst: "IUT Bandjoun, Cameroon", research_label: "Expertise Areas", research_title: "Research & Specializations", pubs_label: "Scientific Contributions", pubs_title: "Publications", skills_label: "Technical Skills", skills_title: "Expertise", contact_label: "Opportunities", contact_title: "Available for interview", contact_desc: "I am immediately available for an academic or professional internship in Canada or North America." },
+            ru: { nav_vision: "Видение", nav_about: "Профиль", nav_experience: "Опыт", nav_education: "Образование", nav_research: "Исследования", nav_contact: "Контакты", stage_btn: "🎯 Стажировка / Работа", hero_badge: "Доступен для академической/профессиональной стажировки", hero_subtitle: "Исследователь и инженер информационных систем. Специалист по автономной кибербезопасности, облачным вычислениям и AIOps.", location1: "Камерун → Россия → Северная Америка", location2: "Магистр (РГРТУ)", location3: "Опыт 7+ лет", contact_btn: "📩 Связаться", vision_quote: '"В мире, где данные — это новая нефть, безопасность должна быть проактивной, интеллектуальной и автономной."', vision_text: "Моя экспертиза сочетает передовой анализ данных с автономными системами безопасности на основе ИИ. В настоящее время я изучаю архитектуры Zero-Trust и гибридные облачные среды Kubernetes.", rsreu_link: "📄 Официальное подтверждение: Презентация на форуме СТНО-2026 (РГРТУ)", rsreu_link2: "📄 Конференция СТНО-2026: презентация 'Autonomic Shield' (РГРТУ)", about_label: "Философия данных и безопасности", about_title: "Обо мне", about_subtitle: "От сырых данных к цифровому иммунитету", about_p1: "<strong>William Patrick FONKOU</strong> — внимательный профессионал с более чем 7-летним опытом в управлении данными, операционной координации и ИТ-поддержке.", about_p2: "В настоящее время получаю степень магистра в Рязанском государственном радиотехническом университете (РГРТУ), разрабатывая инновационную диссертацию по <strong>Zero-Trust фреймворкам на основе AIOps</strong>.", quote: "«Безопасность не должна быть ограничением, а возникающим поведением самой инфраструктуры.»", about_p3: "<strong>🎯 Активно ищу стажировку в Канаде / Северной Америке</strong> в области кибербезопасности, инженерии данных или облачной инфраструктуры.", stat1: "Лет опыта", stat2: "Публикации", stat3: "Дипломы", exp_label: "Междисциплинарная экспертиза и педагогика", exp_title: "Профессиональный опыт", edu_label: "Академический путь", edu_title: "Образование", edu1_title: "Магистр информационных систем", edu1_inst: "РГРТУ, Россия", edu2_title: "Бакалавр управления ИТ-проектами", edu2_inst: "ENSET, Дуала, Камерун", edu3_title: "DIPET 1 - преподаватель ИКТ", edu3_inst: "Университет Баменды, Камерун", edu4_title: "BTS по информатике", edu4_inst: "IUT Банджун, Камерун", research_label: "Области экспертизы", research_title: "Исследования и специализации", pubs_label: "Научные публикации", pubs_title: "Публикации", skills_label: "Технические навыки", skills_title: "Экспертиза", contact_label: "Возможности", contact_title: "Доступен для интервью", contact_desc: "Я немедленно доступен для академической или профессиональной стажировки в Канаде или Северной Америке." }
+        };
+        const researchData = { fr: [{ icon: "🛡️", title: "Cybersécurité Autonome", desc: "Systèmes de défense auto-adaptatifs inspirés des systèmes immunitaires.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Cloud & Kubernetes", desc: "Orchestration de conteneurs, architecture microservices.", tags: ["K8s", "Docker", "Microservices"] }, { icon: "🤖", title: "IA & Machine Learning", desc: "Réseaux de neurones (GNN, LSTM/TCN) et apprentissage par renforcement.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Data Governance & BI", desc: "Validation des données, automatisation des reporting, Power BI.", tags: ["Power BI", "SQL", "Data Quality"] }],
+            en: [{ icon: "🛡️", title: "Autonomous Cybersecurity", desc: "Self-adaptive defense systems inspired by biological immune systems.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Cloud & Kubernetes", desc: "Container orchestration, microservices architecture.", tags: ["K8s", "Docker", "Microservices"] }, { icon: "🤖", title: "AI & Machine Learning", desc: "Neural networks (GNN, LSTM/TCN) and reinforcement learning.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Data Governance & BI", desc: "Data validation, reporting automation, Power BI.", tags: ["Power BI", "SQL", "Data Quality"] }],
+            ru: [{ icon: "🛡️", title: "Автономная кибербезопасность", desc: "Самоадаптирующиеся системы защиты, вдохновленные биологическими иммунными системами.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Облака и Kubernetes", desc: "Оркестрация контейнеров, архитектура микросервисов.", tags: ["K8s", "Docker", "Микросервисы"] }, { icon: "🤖", title: "ИИ и машинное обучение", desc: "Нейронные сети (GNN, LSTM/TCN) и обучение с подкреплением.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Управление данными и BI", desc: "Валидация данных, автоматизация отчетности, Power BI.", tags: ["Power BI", "SQL", "Качество данных"] }] };
+        const pubsData = { fr: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework intégrant eBPF, TCN + GNN et apprentissage par renforcement.", meta: "Co-auteur : I.N. Trushkova | RSREU / STNO-2026" }, { year: "2025", title: "The Autonomous Revolution", desc: "Transformation de la cybersécurité via l'infrastructure intelligente.", meta: "Co-auteur : I.N. Trushkova | IX Forum STNO-2026" }],
+            en: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework integrating eBPF, TCN + GNN and reinforcement learning.", meta: "Co-author: I.N. Trushkova | RSREU / STNO-2026" }, { year: "2025", title: "The Autonomous Revolution", desc: "Cybersecurity transformation through intelligent infrastructure.", meta: "Co-author: I.N. Trushkova | IX STNO-2026 Forum" }],
+            ru: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Фреймворк, интегрирующий eBPF, TCN + GNN и обучение с подкреплением.", meta: "Соавтор: И.Н. Трушкова | РГРТУ / СТНО-2026" }, { year: "2025", title: "The Autonomous Revolution", desc: "Трансформация кибербезопасности через интеллектуальную инфраструктуру.", meta: "Соавтор: И.Н. Трушкова | IX Форум СТНО-2026" }] };
+        function renderResearch(lang) { document.getElementById('research-grid').innerHTML = researchData[lang].map(r => `<div class="research-card"><div class="research-icon">${r.icon}</div><h3>${r.title}</h3><p>${r.desc}</p><div class="research-tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>`).join(''); }
+        function renderPublications(lang) { document.getElementById('pub-list').innerHTML = pubsData[lang].map(p => `<div class="pub-item"><div class="pub-year">${p.year}</div><div class="pub-content"><h4>${p.title}</h4><p>${p.desc}</p><div class="pub-meta">${p.meta}</div></div></div>`).join(''); }
+        function renderSkills(lang) { const skills = { fr: `<div class="skill-category"><h4>Sécurité & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Gestion de Projets IT</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Formation & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`, en: `<div class="skill-category"><h4>Security & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">IT Project Management</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Training & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word Expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`, ru: `<div class="skill-category"><h4>Безопасность и облака</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Архитектура</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Данные и аналитика</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Управление</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Управление ИТ-проектами</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Обучение и поддержка</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word эксперт</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>` }; document.getElementById('skills-grid').innerHTML = skills[lang]; }
+        function setLanguage(lang) { const t = translations[lang]; document.querySelectorAll('[data-key]').forEach(el => { const key = el.getAttribute('data-key'); if (t[key]) el.innerHTML = t[key]; }); renderResearch(lang); renderPublications(lang); renderSkills(lang); document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang)); }
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
+        document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
+        const revealOnScroll = () => { document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active'); }); };
+        window.addEventListener('scroll', revealOnScroll); revealOnScroll();
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+        setLanguage('fr');
+    </script>
+</body>
+</html>
