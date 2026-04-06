@@ -105,7 +105,6 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            flex-wrap: wrap;
         }
 
         .lang-switch {
@@ -158,25 +157,6 @@
         .btn-stage:hover {
             background: var(--accent-light);
             transform: translateY(-2px);
-        }
-
-        .view-counter {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(255,255,255,0.08);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-            margin-left: 0.5rem;
-        }
-
-        .view-counter i {
-            font-size: 0.8rem;
-            color: var(--accent);
         }
 
         .hero {
@@ -328,6 +308,7 @@
             font-weight: 600;
         }
 
+        /* Vision Section */
         .vision-section {
             background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
             border-bottom: 1px solid rgba(201, 169, 98, 0.2);
@@ -339,6 +320,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+        }
+
+        .vision-icon {
+            font-size: 4rem;
+            text-align: center;
+            color: var(--accent);
         }
 
         .vision-quote {
@@ -859,10 +846,6 @@
             .nav-actions {
                 justify-content: center;
             }
-            .view-counter {
-                margin-left: 0;
-                margin-top: 0.3rem;
-            }
             .vision-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -914,12 +897,12 @@
         <div class="nav-container">
             <div class="logo">W.P. FONKOU</div>
             <ul class="nav-links">
-                <li><a href="#vision" id="navVision">Vision</a></li>
-                <li><a href="#about" id="navAbout">Profil</a></li>
-                <li><a href="#experience" id="navExperience">Expérience</a></li>
-                <li><a href="#education" id="navEducation">Formation</a></li>
-                <li><a href="#research" id="navResearch">Recherche</a></li>
-                <li><a href="#contact" id="navContact">Contact</a></li>
+                <li><a href="#vision" data-key="nav_vision">Vision</a></li>
+                <li><a href="#about" data-key="nav_about">Profil</a></li>
+                <li><a href="#experience" data-key="nav_experience">Expérience</a></li>
+                <li><a href="#education" data-key="nav_education">Formation</a></li>
+                <li><a href="#research" data-key="nav_research">Recherche</a></li>
+                <li><a href="#contact" data-key="nav_contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="lang-switch">
@@ -928,9 +911,10 @@
                     <button class="lang-btn" data-lang="ru">RU</button>
                 </div>
                 <div style="display: inline-flex; align-items: center;">
-                    <a href="#contact" class="btn-stage" id="stageBtn">🎯 Stage / Emploi</a>
-                    <div class="view-counter">
-                        <i>👁️</i> <span id="viewCount">0</span> <span id="viewText">vues</span>
+                    <a href="#contact" class="btn-stage" data-key="stage_btn">🎯 Stage / Emploi</a>
+                    <!-- Compteur de vues ajouté juste après le bouton -->
+                    <div class="view-counter" id="viewCounter">
+                        <i>👁️</i> <span id="viewCount">0</span> <span data-key="view_text">vues</span>
                     </div>
                 </div>
             </div>
@@ -939,61 +923,66 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge" id="heroBadge">Disponible pour Stage Académique / Professionnel</div>
+            <div class="hero-badge" data-key="hero_badge">Disponible pour Stage Académique / Professionnel</div>
             <h1>William Patrick <span>FONKOU</span></h1>
-            <p class="hero-subtitle" id="heroSubtitle">Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.</p>
+            <p class="hero-subtitle" data-key="hero_subtitle">Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.</p>
             <div class="hero-location">
-                <span>📍 <span id="location1">Cameroun → Russie → Amérique du Nord</span></span>
-                <span>🎓 <span id="location2">Master (RSREU)</span></span>
-                <span>💼 <span id="location3">7+ ans d'expérience</span></span>
+                <span>📍 <span data-key="location1">Cameroun → Russie → Amérique du Nord</span></span>
+                <span>🎓 <span data-key="location2">Master (RSREU)</span></span>
+                <span>💼 <span data-key="location3">7+ ans d'expérience</span></span>
             </div>
             <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary" id="contactBtn">📩 Me Contacter</a>
+                <a href="#contact" class="btn btn-primary" data-key="contact_btn">📩 Me Contacter</a>
                 <a href="https://github.com/williamfonkou" class="btn btn-outline" target="_blank">💻 GitHub</a>
             </div>
         </div>
     </section>
 
+    <!-- Section Data & Security : ma philosophie (avec lien RSREU) -->
     <section id="vision" class="vision-section">
-        <div class="vision-grid" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+       <div class="vision-grid" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <div class="about-image-inner">
-                <img src="photo-presentation.jpg" alt="William Patrick FONKOU">
+                 <img src="photo-presentation.jpg" alt="William Patrick FONKOU - Présentation professionnelle">
             </div>
             <div class="vision-text">
-                <div class="vision-quote" id="visionQuote">"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."</div>
-                <p id="visionText">Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.</p>
+                <div class="vision-quote" data-key="vision_quote">"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."</div>
+                <p data-key="vision_text">Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.</p>
                 <div class="vision-tags">
                     <span class="tag">Data Analytics</span>
                     <span class="tag">Zero-Trust</span>
                     <span class="tag">AIOps</span>
                     <span class="tag">Kubernetes Security</span>
                 </div>
-                <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" id="rsreuLink">📄 Confirmation officielle : Présentation au forum STNO-2026 (RSREU)</a>
+                <!-- Lien officiel RSREU vers l'article sur le forum STNO-2026 -->
+                <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" data-key="rsreu_link">
+                    <i class="rsreu-icon">📄</i> Confirmation officielle : Présentation au forum STNO-2026 (RSREU)
+                </a>
             </div>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="section-header">
-            <div class="section-label" id="aboutLabel">Data & Security Philosophy</div>
-            <h2 class="section-title" id="aboutTitle">À Propos</h2>
+            <div class="section-label" data-key="about_label">Data & Security Philosophy</div>
+            <h2 class="section-title" data-key="about_title">À Propos</h2>
         </div>
         <div class="about-grid">
             <div class="about-image">
                 <div class="about-image-inner">
-                    <img src="photo-presentation1.JPG" alt="William Patrick FONKOU">
+                    <!-- Photo professionnelle - présentation/conférence -->
+                    <img src="photo-presentation1.JPG" alt="William Patrick FONKOU - Présentation professionnelle">
                 </div>
             </div>
             <div class="about-content">
-                <h3 id="aboutSubtitle">De la donnée brute à l'immunité numérique</h3>
-                <p id="aboutP1"><strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.</p>
-                <p id="aboutP2">Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.</p>
-                <div class="signature-quote" id="quote">« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »</div>
-                <p id="aboutP3"><strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.</p>
+                <h3 data-key="about_subtitle">De la donnée brute à l'immunité numérique</h3>
+                <p data-key="about_p1"><strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.</p>
+                <p data-key="about_p2">Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.</p>
+                <div class="signature-quote" data-key="quote">« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »</div>
+                <p data-key="about_p3"><strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.</p>
                 <div class="about-stats">
-                    <div class="stat"><div class="stat-number">7+</div><div class="stat-label" id="stat1">Années d'Expérience</div></div>
-                    <div class="stat"><div class="stat-number">2</div><div class="stat-label" id="stat2">Publications</div></div>
-                    <div class="stat"><div class="stat-number">4</div><div class="stat-label" id="stat3">Diplômes</div></div>
+                    <div class="stat"><div class="stat-number">7+</div><div class="stat-label" data-key="stat1">Années d'Expérience</div></div>
+                    <div class="stat"><div class="stat-number">2</div><div class="stat-label" data-key="stat2">Publications</div></div>
+                    <div class="stat"><div class="stat-number">4</div><div class="stat-label" data-key="stat3">Diplômes</div></div>
                 </div>
             </div>
         </div>
@@ -1001,34 +990,45 @@
 
     <section id="experience">
         <div class="section-header">
-            <div class="section-label" id="expLabel">Cross-domain expertise & pedagogy</div>
-            <h2 class="section-title" id="expTitle">Expérience professionnelle</h2>
+            <div class="section-label" data-key="exp_label">Cross-domain expertise & pedagogy</div>
+            <h2 class="section-title" data-key="exp_title">Expérience professionnelle</h2>
         </div>
-        <div class="exp-grid" id="expGrid"></div>
+        <div class="exp-grid">
+            <div class="exp-card"><h3>📊 Associate M&E Assistant</h3><div class="exp-date">2022 – 2024 | GEORGETOWN, Garoua-Boulai</div><ul><li>Validated 500+ field dossiers monthly</li><li>Automated reporting workflows → 30-40% time gain</li><li>Designed KPI dashboards for executive decisions</li></ul></div>
+            <div class="exp-card"><h3>🗄️ Data Manager & Technical Support</h3><div class="exp-date">2019 – 2022 | OMNIUM SERVICE, Douala</div><ul><li>Managed 200+ asset inventory with 99.5% accuracy</li><li>Implemented QA gates preventing 95% non-conforming docs</li><li>Reduced equipment downtime by 20%</li></ul></div>
+            <div class="exp-card"><h3>💻 IT Manager & Admin Assistant</h3><div class="exp-date">2017 – 2021 | ARERC SARL, Bafoussam</div><ul><li>Maintained 50+ workstations & networks (99.8% uptime)</li><li>Trained 30+ non-technical staff on data best practices</li><li>Full asset lifecycle documentation</li></ul></div>
+            <div class="exp-card"><h3>📚 ICT Educator & Technical Instructor</h3><div class="exp-date">2014 – 2021 | Ministry of Secondary Education, Cameroon</div><ul><li>7+ years teaching ICT & computer science</li><li>Trained 200+ learners in database fundamentals & MS Office</li><li>Developed pedagogical materials bridging theory and practice</li></ul></div>
+        </div>
     </section>
 
-    <section id="education"><div class="section-header"><div class="section-label" id="eduLabel">Parcours Académique</div><h2 class="section-title" id="eduTitle">Formation</h2></div>
-        <div class="timeline" id="timeline"></div>
+    <section id="education"><div class="section-header"><div class="section-label" data-key="edu_label">Parcours Académique</div><h2 class="section-title" data-key="edu_title">Formation</h2></div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-date">2025 - Présent</div><div class="timeline-title" data-key="edu1_title">Master en Systèmes d'Information</div><div class="timeline-institution" data-key="edu1_inst">RSREU, Russie</div></div>
+            <div class="timeline-item"><div class="timeline-date">2022</div><div class="timeline-title" data-key="edu2_title">Licence en Gestion de Projets IT</div><div class="timeline-institution" data-key="edu2_inst">ENSET, Douala, Cameroun</div></div>
+            <div class="timeline-item"><div class="timeline-date">2020</div><div class="timeline-title" data-key="edu3_title">DIPET 1 - Professeur TIC</div><div class="timeline-institution" data-key="edu3_inst">Université de Bamenda, Cameroun</div></div>
+            <div class="timeline-item"><div class="timeline-date">2014</div><div class="timeline-title" data-key="edu4_title">BTS en Informatique de Gestion</div><div class="timeline-institution" data-key="edu4_inst">IUT Bandjoun, Cameroun</div></div>
+        </div>
     </section>
 
-    <section id="research" class="research"><div class="section-header"><div class="section-label" id="researchLabel">Domaines d'Expertise</div><h2 class="section-title" id="researchTitle">Recherche & Spécialisations</h2></div>
-        <div class="research-grid" id="researchGrid"></div>
+    <section id="research" class="research"><div class="section-header"><div class="section-label" data-key="research_label">Domaines d'Expertise</div><h2 class="section-title" data-key="research_title">Recherche & Spécialisations</h2></div>
+        <div class="research-grid" id="research-grid"></div>
+        <!-- Lien ajouté également ici pour renforcer la crédibilité académique -->
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" id="rsreuLink2" style="background: rgba(201, 169, 98, 0.1);">📄 Conférence STNO-2026 : présentation de "Autonomic Shield" (RSREU)</a>
+            <a href="https://rsreu.ru/events2/conferences-and-seminar/17512-item-17512" target="_blank" class="rsreu-conf-link" data-key="rsreu_link2" style="background: rgba(201, 169, 98, 0.1);">📄 Conférence STNO-2026 : présentation de "Autonomic Shield" (RSREU)</a>
         </div>
     </section>
 
-    <section id="publications" class="publications"><div class="section-header"><div class="section-label" id="pubsLabel">Contributions Scientifiques</div><h2 class="section-title" id="pubsTitle">Publications</h2></div>
-        <div class="pub-list" id="pubList"></div>
+    <section id="publications" class="publications"><div class="section-header"><div class="section-label" data-key="pubs_label">Contributions Scientifiques</div><h2 class="section-title" data-key="pubs_title">Publications</h2></div>
+        <div class="pub-list" id="pub-list"></div>
     </section>
 
-    <section id="skills"><div class="section-header"><div class="section-label" id="skillsLabel">Compétences Techniques</div><h2 class="section-title" id="skillsTitle">Expertise</h2></div>
-        <div class="skills-grid" id="skillsGrid"></div>
+    <section id="skills"><div class="section-header"><div class="section-label" data-key="skills_label">Compétences Techniques</div><h2 class="section-title" data-key="skills_title">Expertise</h2></div>
+        <div class="skills-grid" id="skills-grid"></div>
     </section>
 
-    <section id="contact" class="contact"><div class="contact-content"><div class="section-label" id="contactLabel">Opportunités</div><h2 id="contactTitle">Disponible pour entretien</h2>
-        <p id="contactDesc">Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord.</p>
-        <div class="contact-info"><div class="contact-item"><span>📧</span><div><div style="color: var(--text-muted);">Email</div><div>fonkouwilliamp@gmail.com</div></div></div>
+    <section id="contact" class="contact"><div class="contact-content"><div class="section-label" data-key="contact_label">Opportunités</div><h2 data-key="contact_title">Disponible pour entretien</h2>
+        <p data-key="contact_desc">Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord.</p>
+        <div class="contact-info"><div class="contact-item"><span>📧</span><div><div style="color: var(--text-muted);">Email</div><div>fonkouwilliamp@gmaim.com</div></div></div>
         <div class="contact-item"><span>📱</span><div><div style="color: var(--text-muted);">Téléphone</div><div>+7 996 092 1756</div></div></div>
         <div class="contact-item"><span>📱</span><div><div style="color: var(--text-muted);">Telegram</div><div>@William_FONKOU</div></div></div></div>
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
@@ -1041,205 +1041,21 @@
     <footer><p>© 2025 William Patrick FONKOU — Portfolio académique et professionnel</p><p style="margin-top: 0.5rem; font-size: 0.75rem;">AAIS • Data & Security for resilient infrastructure</p></footer>
 
     <script>
-        // Compteur de vues
-        function updateViewCounter() {
-            let views = localStorage.getItem('portfolio_views_count');
-            views = views === null ? 1 : parseInt(views) + 1;
-            localStorage.setItem('portfolio_views_count', views);
-            document.getElementById('viewCount').innerText = views;
-        }
-        updateViewCounter();
-
-        // Données multilingues complètes
         const translations = {
-            fr: {
-                navVision: "Vision", navAbout: "Profil", navExperience: "Expérience", navEducation: "Formation", navResearch: "Recherche", navContact: "Contact",
-                stageBtn: "🎯 Stage / Emploi", viewText: "vues", heroBadge: "Disponible pour Stage Académique / Professionnel",
-                heroSubtitle: "Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.",
-                location1: "Cameroun → Russie → Amérique du Nord", location2: "Master (RSREU)", location3: "7+ ans d'expérience",
-                contactBtn: "📩 Me Contacter", visionQuote: '"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."',
-                visionText: "Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.",
-                rsreuLink: "📄 Confirmation officielle : Présentation au forum STNO-2026 (RSREU)", rsreuLink2: "📄 Conférence STNO-2026 : présentation de 'Autonomic Shield' (RSREU)",
-                aboutLabel: "Data & Security Philosophy", aboutTitle: "À Propos", aboutSubtitle: "De la donnée brute à l'immunité numérique",
-                aboutP1: "<strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.",
-                aboutP2: "Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.",
-                quote: "« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »",
-                aboutP3: "<strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.",
-                stat1: "Années d'Expérience", stat2: "Publications", stat3: "Diplômes",
-                expLabel: "Cross-domain expertise & pedagogy", expTitle: "Expérience professionnelle",
-                eduLabel: "Parcours Académique", eduTitle: "Formation",
-                researchLabel: "Domaines d'Expertise", researchTitle: "Recherche & Spécialisations",
-                pubsLabel: "Contributions Scientifiques", pubsTitle: "Publications",
-                skillsLabel: "Compétences Techniques", skillsTitle: "Expertise",
-                contactLabel: "Opportunités", contactTitle: "Disponible pour entretien", contactDesc: "Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord.",
-                experienceItems: [
-                    { title: "📊 Associate M&E Assistant", date: "2022 – 2024 | GEORGETOWN, Garoua-Boulai", items: ["Validated 500+ field dossiers monthly", "Automated reporting workflows → 30-40% time gain", "Designed KPI dashboards for executive decisions"] },
-                    { title: "🗄️ Data Manager & Technical Support", date: "2019 – 2022 | OMNIUM SERVICE, Douala", items: ["Managed 200+ asset inventory with 99.5% accuracy", "Implemented QA gates preventing 95% non-conforming docs", "Reduced equipment downtime by 20%"] },
-                    { title: "💻 IT Manager & Admin Assistant", date: "2017 – 2021 | ARERC SARL, Bafoussam", items: ["Maintained 50+ workstations & networks (99.8% uptime)", "Trained 30+ non-technical staff on data best practices", "Full asset lifecycle documentation"] },
-                    { title: "📚 ICT Educator & Technical Instructor", date: "2014 – 2021 | Ministry of Secondary Education, Cameroon", items: ["7+ years teaching ICT & computer science", "Trained 200+ learners in database fundamentals & MS Office", "Developed pedagogical materials bridging theory and practice"] }
-                ],
-                educationItems: [
-                    { date: "2025 - Présent", title: "Master en Systèmes d'Information", institution: "RSREU, Russie" },
-                    { date: "2022", title: "Licence en Gestion de Projets IT", institution: "ENSET, Douala, Cameroun" },
-                    { date: "2020", title: "DIPET 1 - Professeur TIC", institution: "Université de Bamenda, Cameroun" },
-                    { date: "2014", title: "BTS en Informatique de Gestion", institution: "IUT Bandjoun, Cameroun" }
-                ]
-            },
-            en: {
-                navVision: "Vision", navAbout: "Profile", navExperience: "Experience", navEducation: "Education", navResearch: "Research", navContact: "Contact",
-                stageBtn: "🎯 Internship / Job", viewText: "views", heroBadge: "Available for Academic / Professional Internship",
-                heroSubtitle: "Information Systems Researcher & Engineer. Specialist in Autonomous Cybersecurity, Cloud Computing & AIOps.",
-                location1: "Cameroon → Russia → North America", location2: "Master's (RSREU)", location3: "7+ years experience",
-                contactBtn: "📩 Contact Me", visionQuote: '"In a world where data is the new oil, security must be proactive, intelligent, and autonomous."',
-                visionText: "My expertise combines advanced data analytics with AI-driven autonomous security systems. I am currently researching Zero-Trust architectures and hybrid cloud Kubernetes environments.",
-                rsreuLink: "📄 Official confirmation: Presentation at STNO-2026 forum (RSREU)", rsreuLink2: "📄 STNO-2026 Conference: 'Autonomic Shield' presentation (RSREU)",
-                aboutLabel: "Data & Security Philosophy", aboutTitle: "About", aboutSubtitle: "From raw data to digital immunity",
-                aboutP1: "<strong>William Patrick FONKOU</strong> — detail-oriented professional with 7+ years of cross-functional expertise in data governance, operational coordination, and IT support.",
-                aboutP2: "Currently pursuing a Master's at Ryazan State Radio Engineering University (RSREU), I am developing an innovative thesis on <strong>AIOps-based Zero-Trust frameworks</strong>.",
-                quote: "« Security should not be a constraint, but an emergent behavior of the infrastructure itself. »",
-                aboutP3: "<strong>🎯 Actively seeking an internship in Canada / North America</strong> in cybersecurity, data engineering, or cloud infrastructure.",
-                stat1: "Years Experience", stat2: "Publications", stat3: "Degrees",
-                expLabel: "Cross-domain expertise & pedagogy", expTitle: "Professional Experience",
-                eduLabel: "Academic Path", eduTitle: "Education",
-                researchLabel: "Expertise Areas", researchTitle: "Research & Specializations",
-                pubsLabel: "Scientific Contributions", pubsTitle: "Publications",
-                skillsLabel: "Technical Skills", skillsTitle: "Expertise",
-                contactLabel: "Opportunities", contactTitle: "Available for interview", contactDesc: "I am immediately available for an academic or professional internship in Canada or North America.",
-                experienceItems: [
-                    { title: "📊 Associate M&E Assistant", date: "2022 – 2024 | GEORGETOWN, Garoua-Boulai", items: ["Validated 500+ field dossiers monthly", "Automated reporting workflows → 30-40% time gain", "Designed KPI dashboards for executive decisions"] },
-                    { title: "🗄️ Data Manager & Technical Support", date: "2019 – 2022 | OMNIUM SERVICE, Douala", items: ["Managed 200+ asset inventory with 99.5% accuracy", "Implemented QA gates preventing 95% non-conforming docs", "Reduced equipment downtime by 20%"] },
-                    { title: "💻 IT Manager & Admin Assistant", date: "2017 – 2021 | ARERC SARL, Bafoussam", items: ["Maintained 50+ workstations & networks (99.8% uptime)", "Trained 30+ non-technical staff on data best practices", "Full asset lifecycle documentation"] },
-                    { title: "📚 ICT Educator & Technical Instructor", date: "2014 – 2021 | Ministry of Secondary Education, Cameroon", items: ["7+ years teaching ICT & computer science", "Trained 200+ learners in database fundamentals & MS Office", "Developed pedagogical materials bridging theory and practice"] }
-                ],
-                educationItems: [
-                    { date: "2025 - Present", title: "Master's in Information Systems", institution: "RSREU, Russia" },
-                    { date: "2022", title: "Bachelor's in IT Project Management", institution: "ENSET, Douala, Cameroon" },
-                    { date: "2020", title: "DIPET 1 - ICT Teacher", institution: "University of Bamenda, Cameroon" },
-                    { date: "2014", title: "BTS in IT & Business Data Management", institution: "IUT Bandjoun, Cameroon" }
-                ]
-            },
-            ru: {
-                navVision: "Видение", navAbout: "Профиль", navExperience: "Опыт", navEducation: "Образование", navResearch: "Исследования", navContact: "Контакты",
-                stageBtn: "🎯 Стажировка / Работа", viewText: "просмотров", heroBadge: "Доступен для академической/профессиональной стажировки",
-                heroSubtitle: "Исследователь и инженер информационных систем. Специалист по автономной кибербезопасности, облачным вычислениям и AIOps.",
-                location1: "Камерун → Россия → Северная Америка", location2: "Магистр (РГРТУ)", location3: "Опыт 7+ лет",
-                contactBtn: "📩 Связаться", visionQuote: '"В мире, где данные — это новая нефть, безопасность должна быть проактивной, интеллектуальной и автономной."',
-                visionText: "Моя экспертиза сочетает передовой анализ данных с автономными системами безопасности на основе ИИ. В настоящее время я изучаю архитектуры Zero-Trust и гибридные облачные среды Kubernetes.",
-                rsreuLink: "📄 Официальное подтверждение: Презентация на форуме СТНО-2026 (РГРТУ)", rsreuLink2: "📄 Конференция СТНО-2026: презентация 'Autonomic Shield' (РГРТУ)",
-                aboutLabel: "Философия данных и безопасности", aboutTitle: "Обо мне", aboutSubtitle: "От сырых данных к цифровому иммунитету",
-                aboutP1: "<strong>William Patrick FONKOU</strong> — внимательный профессионал с более чем 7-летним опытом в управлении данными, операционной координации и ИТ-поддержке.",
-                aboutP2: "В настоящее время получаю степень магистра в Рязанском государственном радиотехническом университете (РГРТУ), разрабатывая инновационную диссертацию по <strong>Zero-Trust фреймворкам на основе AIOps</strong>.",
-                quote: "«Безопасность не должна быть ограничением, а возникающим поведением самой инфраструктуры.»",
-                aboutP3: "<strong>🎯 Активно ищу стажировку в Канаде / Северной Америке</strong> в области кибербезопасности, инженерии данных или облачной инфраструктуры.",
-                stat1: "Лет опыта", stat2: "Публикации", stat3: "Дипломы",
-                expLabel: "Междисциплинарная экспертиза и педагогика", expTitle: "Профессиональный опыт",
-                eduLabel: "Академический путь", eduTitle: "Образование",
-                researchLabel: "Области экспертизы", researchTitle: "Исследования и специализации",
-                pubsLabel: "Научные публикации", pubsTitle: "Публикации",
-                skillsLabel: "Технические навыки", skillsTitle: "Экспертиза",
-                contactLabel: "Возможности", contactTitle: "Доступен для интервью", contactDesc: "Я немедленно доступен для академической или профессиональной стажировки в Канаде или Северной Америке.",
-                experienceItems: [
-                    { title: "📊 Ассистент по мониторингу и оценке", date: "2022 – 2024 | GEORGETOWN, Гаруа-Булаи", items: ["Ежемесячная проверка 500+ полевых досье", "Автоматизация отчетности → экономия времени 30-40%", "Создание информационных панелей KPI"] },
-                    { title: "🗄️ Менеджер данных и техническая поддержка", date: "2019 – 2022 | OMNIUM SERVICE, Дуала", items: ["Управление 200+ активами с точностью 99.5%", "Внедрение контроля качества", "Сокращение простоев оборудования на 20%"] },
-                    { title: "💻 IT-менеджер и административный помощник", date: "2017 – 2021 | ARERC SARL, Бафусам", items: ["Обслуживание 50+ рабочих станций (доступность 99.8%)", "Обучение 30+ сотрудников", "Полная документация жизненного цикла активов"] },
-                    { title: "📚 Преподаватель ИКТ и технический инструктор", date: "2014 – 2021 | Министерство среднего образования, Камерун", items: ["Преподавание ИКТ 7+ лет", "Обучение 200+ студентов", "Разработка учебных материалов"] }
-                ],
-                educationItems: [
-                    { date: "2025 - Настоящее время", title: "Магистр информационных систем", institution: "РГРТУ, Россия" },
-                    { date: "2022", title: "Бакалавр управления ИТ-проектами", institution: "ENSET, Дуала, Камерун" },
-                    { date: "2020", title: "DIPET 1 - преподаватель ИКТ", institution: "Университет Баменды, Камерун" },
-                    { date: "2014", title: "BTS по информатике", institution: "IUT Банджун, Камерун" ]
-                }
-            }
+            fr: { nav_vision: "Vision", nav_about: "Profil", nav_experience: "Expérience", nav_education: "Formation", nav_research: "Recherche", nav_contact: "Contact", stage_btn: "🎯 Stage / Emploi", hero_badge: "Disponible pour Stage Académique / Professionnel", hero_subtitle: "Chercheur & Ingénieur en Systèmes d'Information. Spécialiste en Cybersécurité Autonome, Cloud Computing & AIOps.", location1: "Cameroun → Russie → Amérique du Nord", location2: "Master (RSREU)", location3: "7+ ans d'expérience", contact_btn: "📩 Me Contacter", vision_quote: '"Dans un monde où les données sont le nouveau pétrole, la sécurité doit être proactive, intelligente et autonome."', vision_text: "Mon expertise combine l'analyse de données avancée avec des systèmes de sécurité autonomes basés sur l'IA. J'étudie actuellement les architectures Zero-Trust et les environnements Kubernetes cloud hybrides.", rsreu_link: "📄 Confirmation officielle : Présentation au forum STNO-2026 (RSREU)", rsreu_link2: "📄 Conférence STNO-2026 : présentation de 'Autonomic Shield' (RSREU)", about_label: "Data & Security Philosophy", about_title: "À Propos", about_subtitle: "De la donnée brute à l'immunité numérique", about_p1: "<strong>William Patrick FONKOU</strong> — professionnel rigoureux avec plus de 7 ans d'expertise transversale en gouvernance des données, coordination opérationnelle et support IT.", about_p2: "Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.", quote: "« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »", about_p3: "<strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.", stat1: "Années d'Expérience", stat2: "Publications", stat3: "Diplômes", exp_label: "Cross-domain expertise & pedagogy", exp_title: "Expérience professionnelle", edu_label: "Parcours Académique", edu_title: "Formation", edu1_title: "Master en Systèmes d'Information", edu1_inst: "RSREU, Russie", edu2_title: "Licence en Gestion de Projets IT", edu2_inst: "ENSET, Douala, Cameroun", edu3_title: "DIPET 1 - Professeur TIC", edu3_inst: "Université de Bamenda, Cameroun", edu4_title: "BTS en Informatique de Gestion", edu4_inst: "IUT Bandjoun, Cameroun", research_label: "Domaines d'Expertise", research_title: "Recherche & Spécialisations", pubs_label: "Contributions Scientifiques", pubs_title: "Publications", skills_label: "Compétences Techniques", skills_title: "Expertise", contact_label: "Opportunités", contact_title: "Disponible pour entretien", contact_desc: "Je suis disponible immédiatement pour un stage académique ou professionnel au Canada ou en Amérique du Nord." },
+            en: { nav_vision: "Vision", nav_about: "Profile", nav_experience: "Experience", nav_education: "Education", nav_research: "Research", nav_contact: "Contact", stage_btn: "🎯 Internship / Job", hero_badge: "Available for Academic / Professional Internship", hero_subtitle: "Information Systems Researcher & Engineer. Specialist in Autonomous Cybersecurity, Cloud Computing & AIOps.", location1: "Cameroon → Russia → North America", location2: "Master's (RSREU)", location3: "7+ years experience", contact_btn: "📩 Contact Me", vision_quote: '"In a world where data is the new oil, security must be proactive, intelligent, and autonomous."', vision_text: "My expertise combines advanced data analytics with AI-driven autonomous security systems. I am currently researching Zero-Trust architectures and hybrid cloud Kubernetes environments.", rsreu_link: "📄 Official confirmation: Presentation at STNO-2026 forum (RSREU)", rsreu_link2: "📄 STNO-2026 Conference: 'Autonomic Shield' presentation (RSREU)", about_label: "Data & Security Philosophy", about_title: "About", about_subtitle: "From raw data to digital immunity", about_p1: "<strong>William Patrick FONKOU</strong> — detail-oriented professional with 7+ years of cross-functional expertise in data governance, operational coordination, and IT support.", about_p2: "Currently pursuing a Master's at Ryazan State Radio Engineering University (RSREU), I am developing an innovative thesis on <strong>AIOps-based Zero-Trust frameworks</strong>.", quote: "« Security should not be a constraint, but an emergent behavior of the infrastructure itself. »", about_p3: "<strong>🎯 Actively seeking an internship in Canada / North America</strong> in cybersecurity, data engineering, or cloud infrastructure.", stat1: "Years Experience", stat2: "Publications", stat3: "Degrees", exp_label: "Cross-domain expertise & pedagogy", exp_title: "Professional Experience", edu_label: "Academic Path", edu_title: "Education", edu1_title: "Master's in Information Systems", edu1_inst: "RSREU, Russia", edu2_title: "Bachelor's in IT Project Management", edu2_inst: "ENSET, Douala, Cameroon", edu3_title: "DIPET 1 - ICT Teacher", edu3_inst: "University of Bamenda, Cameroon", edu4_title: "BTS in IT & Business Data Management", edu4_inst: "IUT Bandjoun, Cameroon", research_label: "Expertise Areas", research_title: "Research & Specializations", pubs_label: "Scientific Contributions", pubs_title: "Publications", skills_label: "Technical Skills", skills_title: "Expertise", contact_label: "Opportunities", contact_title: "Available for interview", contact_desc: "I am immediately available for an academic or professional internship in Canada or North America." },
+            ru: { nav_vision: "Видение", nav_about: "Профиль", nav_experience: "Опыт", nav_education: "Образование", nav_research: "Исследования", nav_contact: "Контакты", stage_btn: "🎯 Стажировка / Работа", hero_badge: "Доступен для академической/профессиональной стажировки", hero_subtitle: "Исследователь и инженер информационных систем. Специалист по автономной кибербезопасности, облачным вычислениям и AIOps.", location1: "Камерун → Россия → Северная Америка", location2: "Магистр (РГРТУ)", location3: "Опыт 7+ лет", contact_btn: "📩 Связаться", vision_quote: '"В мире, где данные — это новая нефть, безопасность должна быть проактивной, интеллектуальной и автономной."', vision_text: "Моя экспертиза сочетает передовой анализ данных с автономными системами безопасности на основе ИИ. В настоящее время я изучаю архитектуры Zero-Trust и гибридные облачные среды Kubernetes.", rsreu_link: "📄 Официальное подтверждение: Презентация на форуме СТНО-2026 (РГРТУ)", rsreu_link2: "📄 Конференция СТНО-2026: презентация 'Autonomic Shield' (РГРТУ)", about_label: "Философия данных и безопасности", about_title: "Обо мне", about_subtitle: "От сырых данных к цифровому иммунитету", about_p1: "<strong>William Patrick FONKOU</strong> — внимательный профессионал с более чем 7-летним опытом в управлении данными, операционной координации и ИТ-поддержке.", about_p2: "В настоящее время получаю степень магистра в Рязанском государственном радиотехническом университете (РГРТУ), разрабатывая инновационную диссертацию по <strong>Zero-Trust фреймворкам на основе AIOps</strong>.", quote: "«Безопасность не должна быть ограничением, а возникающим поведением самой инфраструктуры.»", about_p3: "<strong>🎯 Активно ищу стажировку в Канаде / Северной Америке</strong> в области кибербезопасности, инженерии данных или облачной инфраструктуры.", stat1: "Лет опыта", stat2: "Публикации", stat3: "Дипломы", exp_label: "Междисциплинарная экспертиза и педагогика", exp_title: "Профессиональный опыт", edu_label: "Академический путь", edu_title: "Образование", edu1_title: "Магистр информационных систем", edu1_inst: "РГРТУ, Россия", edu2_title: "Бакалавр управления ИТ-проектами", edu2_inst: "ENSET, Дуала, Камерун", edu3_title: "DIPET 1 - преподаватель ИКТ", edu3_inst: "Университет Баменды, Камерун", edu4_title: "BTS по информатике", edu4_inst: "IUT Банджун, Камерун", research_label: "Области экспертизы", research_title: "Исследования и специализации", pubs_label: "Научные публикации", pubs_title: "Публикации", skills_label: "Технические навыки", skills_title: "Экспертиза", contact_label: "Возможности", contact_title: "Доступен для интервью", contact_desc: "Я немедленно доступен для академической или профессиональной стажировки в Канаде или Северной Америке." }
         };
-
-        const researchData = {
-            fr: [{ icon: "🛡️", title: "Cybersécurité Autonome", desc: "Systèmes de défense auto-adaptatifs inspirés des systèmes immunitaires.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Cloud & Kubernetes", desc: "Orchestration de conteneurs, architecture microservices.", tags: ["K8s", "Docker", "Microservices"] }, { icon: "🤖", title: "IA & Machine Learning", desc: "Réseaux de neurones (GNN, LSTM/TCN) et apprentissage par renforcement.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Data Governance & BI", desc: "Validation des données, automatisation des reporting, Power BI.", tags: ["Power BI", "SQL", "Data Quality"] }],
+        const researchData = { fr: [{ icon: "🛡️", title: "Cybersécurité Autonome", desc: "Systèmes de défense auto-adaptatifs inspirés des systèmes immunitaires.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Cloud & Kubernetes", desc: "Orchestration de conteneurs, architecture microservices.", tags: ["K8s", "Docker", "Microservices"] }, { icon: "🤖", title: "IA & Machine Learning", desc: "Réseaux de neurones (GNN, LSTM/TCN) et apprentissage par renforcement.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Data Governance & BI", desc: "Validation des données, automatisation des reporting, Power BI.", tags: ["Power BI", "SQL", "Data Quality"] }],
             en: [{ icon: "🛡️", title: "Autonomous Cybersecurity", desc: "Self-adaptive defense systems inspired by biological immune systems.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Cloud & Kubernetes", desc: "Container orchestration, microservices architecture.", tags: ["K8s", "Docker", "Microservices"] }, { icon: "🤖", title: "AI & Machine Learning", desc: "Neural networks (GNN, LSTM/TCN) and reinforcement learning.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Data Governance & BI", desc: "Data validation, reporting automation, Power BI.", tags: ["Power BI", "SQL", "Data Quality"] }],
-            ru: [{ icon: "🛡️", title: "Автономная кибербезопасность", desc: "Самоадаптирующиеся системы защиты, вдохновленные биологическими иммунными системами.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Облака и Kubernetes", desc: "Оркестрация контейнеров, архитектура микросервисов.", tags: ["K8s", "Docker", "Микросервисы"] }, { icon: "🤖", title: "ИИ и машинное обучение", desc: "Нейронные сети (GNN, LSTM/TCN) и обучение с подкреплением.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Управление данными и BI", desc: "Валидация данных, автоматизация отчетности, Power BI.", tags: ["Power BI", "SQL", "Качество данных"] }]
-        };
-        const pubsData = {
-            fr: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework intégrant eBPF, TCN + GNN et apprentissage par renforcement.", meta: "Co-auteur : I.N. Trushkova | RSREU / STNO-2025" }, { year: "2026", title: "The Autonomous Revolution", desc: "Transformation de la cybersécurité via l'infrastructure intelligente.", meta: "Co-auteur : I.N. Trushkova | IX Forum STNO-2026" }],
-            en: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework integrating eBPF, TCN + GNN and reinforcement learning.", meta: "Co-author: I.N. Trushkova | RSREU / STNO-2026" }, { year: "2026", title: "The Autonomous Revolution", desc: "Cybersecurity transformation through intelligent infrastructure.", meta: "Co-author: I.N. Trushkova | IX STNO-2026 Forum" }],
-            ru: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Фреймворк, интегрирующий eBPF, TCN + GNN и обучение с подкреплением.", meta: "Соавтор: И.Н. Трушкова | РГРТУ / СТНО-2026" }, { year: "2026", title: "The Autonomous Revolution", desc: "Трансформация кибербезопасности через интеллектуальную инфраструктуру.", meta: "Соавтор: И.Н. Трушкова | IX Форум СТНО-2026" }]
-        };
-        const skillsContent = {
-            fr: `<div class="skill-category"><h4>Sécurité & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Gestion de Projets IT</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Formation & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`,
-            en: `<div class="skill-category"><h4>Security & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">IT Project Management</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Training & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word Expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`,
-            ru: `<div class="skill-category"><h4>Безопасность и облака</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Архитектура</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Данные и аналитика</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Управление</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Управление ИТ-проектами</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Обучение и поддержка</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word эксперт</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`
-        };
-
-        function renderExperience(lang) {
-            const t = translations[lang];
-            document.getElementById('expGrid').innerHTML = t.experienceItems.map(exp => `
-                <div class="exp-card"><h3>${exp.title}</h3><div class="exp-date">${exp.date}</div><ul>${exp.items.map(i => `<li>${i}</li>`).join('')}</ul></div>
-            `).join('');
-        }
-
-        function renderEducation(lang) {
-            const t = translations[lang];
-            document.getElementById('timeline').innerHTML = t.educationItems.map(edu => `
-                <div class="timeline-item"><div class="timeline-date">${edu.date}</div><div class="timeline-title">${edu.title}</div><div class="timeline-institution">${edu.institution}</div></div>
-            `).join('');
-        }
-
-        function renderResearch(lang) { document.getElementById('researchGrid').innerHTML = researchData[lang].map(r => `<div class="research-card"><div class="research-icon">${r.icon}</div><h3>${r.title}</h3><p>${r.desc}</p><div class="research-tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>`).join(''); }
-        function renderPublications(lang) { document.getElementById('pubList').innerHTML = pubsData[lang].map(p => `<div class="pub-item"><div class="pub-year">${p.year}</div><div class="pub-content"><h4>${p.title}</h4><p>${p.desc}</p><div class="pub-meta">${p.meta}</div></div></div>`).join(''); }
-        function renderSkills(lang) { document.getElementById('skillsGrid').innerHTML = skillsContent[lang]; }
-
-        function setLanguage(lang) {
-            const t = translations[lang];
-            document.getElementById('navVision').innerText = t.navVision;
-            document.getElementById('navAbout').innerText = t.navAbout;
-            document.getElementById('navExperience').innerText = t.navExperience;
-            document.getElementById('navEducation').innerText = t.navEducation;
-            document.getElementById('navResearch').innerText = t.navResearch;
-            document.getElementById('navContact').innerText = t.navContact;
-            document.getElementById('stageBtn').innerHTML = t.stageBtn;
-            document.getElementById('viewText').innerText = t.viewText;
-            document.getElementById('heroBadge').innerText = t.heroBadge;
-            document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
-            document.getElementById('location1').innerText = t.location1;
-            document.getElementById('location2').innerText = t.location2;
-            document.getElementById('location3').innerText = t.location3;
-            document.getElementById('contactBtn').innerHTML = t.contactBtn;
-            document.getElementById('visionQuote').innerText = t.visionQuote;
-            document.getElementById('visionText').innerText = t.visionText;
-            document.getElementById('rsreuLink').innerHTML = t.rsreuLink;
-            document.getElementById('rsreuLink2').innerHTML = t.rsreuLink2;
-            document.getElementById('aboutLabel').innerText = t.aboutLabel;
-            document.getElementById('aboutTitle').innerText = t.aboutTitle;
-            document.getElementById('aboutSubtitle').innerText = t.aboutSubtitle;
-            document.getElementById('aboutP1').innerHTML = t.aboutP1;
-            document.getElementById('aboutP2').innerHTML = t.aboutP2;
-            document.getElementById('quote').innerText = t.quote;
-            document.getElementById('aboutP3').innerHTML = t.aboutP3;
-            document.getElementById('stat1').innerText = t.stat1;
-            document.getElementById('stat2').innerText = t.stat2;
-            document.getElementById('stat3').innerText = t.stat3;
-            document.getElementById('expLabel').innerText = t.expLabel;
-            document.getElementById('expTitle').innerText = t.expTitle;
-            document.getElementById('eduLabel').innerText = t.eduLabel;
-            document.getElementById('eduTitle').innerText = t.eduTitle;
-            document.getElementById('researchLabel').innerText = t.researchLabel;
-            document.getElementById('researchTitle').innerText = t.researchTitle;
-            document.getElementById('pubsLabel').innerText = t.pubsLabel;
-            document.getElementById('pubsTitle').innerText = t.pubsTitle;
-            document.getElementById('skillsLabel').innerText = t.skillsLabel;
-            document.getElementById('skillsTitle').innerText = t.skillsTitle;
-            document.getElementById('contactLabel').innerText = t.contactLabel;
-            document.getElementById('contactTitle').innerText = t.contactTitle;
-            document.getElementById('contactDesc').innerText = t.contactDesc;
-            
-            renderExperience(lang);
-            renderEducation(lang);
-            renderResearch(lang);
-            renderPublications(lang);
-            renderSkills(lang);
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
-        }
-
+            ru: [{ icon: "🛡️", title: "Автономная кибербезопасность", desc: "Самоадаптирующиеся системы защиты, вдохновленные биологическими иммунными системами.", tags: ["Zero-Trust", "AIOps", "eBPF"] }, { icon: "☁️", title: "Облака и Kubernetes", desc: "Оркестрация контейнеров, архитектура микросервисов.", tags: ["K8s", "Docker", "Микросервисы"] }, { icon: "🤖", title: "ИИ и машинное обучение", desc: "Нейронные сети (GNN, LSTM/TCN) и обучение с подкреплением.", tags: ["GNN", "Deep Learning", "RL"] }, { icon: "📊", title: "Управление данными и BI", desc: "Валидация данных, автоматизация отчетности, Power BI.", tags: ["Power BI", "SQL", "Качество данных"] }] };
+        const pubsData = { fr: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework intégrant eBPF, TCN + GNN et apprentissage par renforcement.", meta: "Co-auteur : I.N. Trushkova | RSREU / STNO-2025" }, { year: "2026", title: "The Autonomous Revolution", desc: "Transformation de la cybersécurité via l'infrastructure intelligente.", meta: "Co-auteur : I.N. Trushkova | IX Forum STNO-2026" }],
+            en: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Framework integrating eBPF, TCN + GNN and reinforcement learning.", meta: "Co-author: I.N. Trushkova | RSREU / STNO-2026" }, { year: "2025", title: "The Autonomous Revolution", desc: "Cybersecurity transformation through intelligent infrastructure.", meta: "Co-author: I.N. Trushkova | IX STNO-2026 Forum" }],
+            ru: [{ year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", desc: "Фреймворк, интегрирующий eBPF, TCN + GNN и обучение с подкреплением.", meta: "Соавтор: И.Н. Трушкова | РГРТУ / СТНО-2026" }, { year: "2025", title: "The Autonomous Revolution", desc: "Трансформация кибербезопасности через интеллектуальную инфраструктуру.", meta: "Соавтор: И.Н. Трушкова | IX Форум СТНО-2026" }] };
+        function renderResearch(lang) { document.getElementById('research-grid').innerHTML = researchData[lang].map(r => `<div class="research-card"><div class="research-icon">${r.icon}</div><h3>${r.title}</h3><p>${r.desc}</p><div class="research-tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div></div>`).join(''); }
+        function renderPublications(lang) { document.getElementById('pub-list').innerHTML = pubsData[lang].map(p => `<div class="pub-item"><div class="pub-year">${p.year}</div><div class="pub-content"><h4>${p.title}</h4><p>${p.desc}</p><div class="pub-meta">${p.meta}</div></div></div>`).join(''); }
+        function renderSkills(lang) { const skills = { fr: `<div class="skill-category"><h4>Sécurité & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Gestion de Projets IT</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Formation & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`, en: `<div class="skill-category"><h4>Security & Cloud</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Architecture</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Data & Analytics</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Management</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">IT Project Management</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Training & Support</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word Expert</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>`, ru: `<div class="skill-category"><h4>Безопасность и облака</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Kubernetes / Docker</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Zero-Trust Архитектура</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">eBPF / Falco</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(4)}<div class="skill-dot"></div></div></div></div></div><div class="skill-category"><h4>Данные и аналитика</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">SQL / PostgreSQL</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Power BI / Excel</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div><div class="skill-category"><h4>Управление</h4><div class="skill-list"><div class="skill-item"><span class="skill-name">Управление ИТ-проектами</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">Обучение и поддержка</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div><div class="skill-item"><span class="skill-name">MS Word эксперт</span><div class="skill-level">${'<div class="skill-dot active"></div>'.repeat(5)}</div></div></div></div>` }; document.getElementById('skills-grid').innerHTML = skills[lang]; }
+        function setLanguage(lang) { const t = translations[lang]; document.querySelectorAll('[data-key]').forEach(el => { const key = el.getAttribute('data-key'); if (t[key]) el.innerHTML = t[key]; }); renderResearch(lang); renderPublications(lang); renderSkills(lang); document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang)); }
         document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
         document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
         const revealOnScroll = () => { document.querySelectorAll('.reveal').forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active'); }); };
