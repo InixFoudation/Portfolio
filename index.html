@@ -741,6 +741,24 @@
             flex-wrap: wrap;
         }
 
+        .pub-new {
+            background: rgba(201, 169, 98, 0.2);
+            border-left: 3px solid var(--accent);
+        }
+
+        .badge-new {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .gallery-section {
             background: var(--secondary);
         }
@@ -844,7 +862,6 @@
             transform: scale(1.2);
         }
 
-        /* Section Feedback / Problématique et Question */
         .feedback-section {
             background: linear-gradient(135deg, #0f0f1a 0%, #16213e 100%);
             padding: 4rem 5%;
@@ -1014,42 +1031,17 @@
         }
 
         @media (max-width: 768px) {
-            .feedback-stats {
-                gap: 1.5rem;
-            }
-            
-            .feedback-stat-number {
-                font-size: 1.5rem;
-            }
-            
-            .feedback-btn {
-                padding: 0.8rem 1.8rem;
-                font-size: 0.9rem;
-            }
-            
-            .feedback-topic {
-                font-size: 0.75rem;
-                padding: 0.3rem 1rem;
-            }
-            
-            .feedback-problematique {
-                padding: 1rem;
-            }
-            
-            .feedback-problematique .problematique-text {
-                font-size: 0.95rem;
-            }
-            
-            .feedback-question {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
             .gallery-slide img { height: 350px; }
             .slide-caption h3 { font-size: 1.1rem; }
             .slide-caption p { font-size: 0.75rem; }
             .gallery-btn { padding: 0.5rem 0.8rem; font-size: 1rem; }
+            .feedback-stats { gap: 1.5rem; }
+            .feedback-stat-number { font-size: 1.5rem; }
+            .feedback-btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+            .feedback-topic { font-size: 0.75rem; padding: 0.3rem 1rem; }
+            .feedback-problematique { padding: 1rem; }
+            .feedback-problematique .problematique-text { font-size: 0.95rem; }
+            .feedback-question { font-size: 1rem; }
         }
 
         .skills-grid {
@@ -1307,7 +1299,6 @@
         </div>
     </section>
 
-    <!-- Section Problématique et Question pour la recherche -->
     <section id="feedback" class="feedback-section">
         <div class="feedback-container">
             <div class="feedback-badge">🎓 Thèse de Master - Recherche participative</div>
@@ -1376,7 +1367,7 @@
                 <p data-key="about_p2">Actuellement en Master à l'Université d'État de Radio-ingénierie de Ryazan (RSREU), je développe une thèse innovante sur les <strong>frameworks Zero-Trust basés sur l'AIOps</strong>.</p>
                 <div class="signature-quote" data-key="quote">« La sécurité ne doit pas être un frein, mais un comportement émergent de l'infrastructure elle-même. »</div>
                 <p data-key="about_p3"><strong>🎯 Recherche activement un stage au Canada / Amérique du Nord</strong> en cybersécurité, ingénierie de données ou infrastructure cloud.</p>
-                <div class="about-stats"><div class="stat"><div class="stat-number">7+</div><div class="stat-label" data-key="stat1">Années d'Expérience</div></div><div class="stat"><div class="stat-number">2</div><div class="stat-label" data-key="stat2">Publications</div></div><div class="stat"><div class="stat-number">4</div><div class="stat-label" data-key="stat3">Diplômes</div></div></div>
+                <div class="about-stats"><div class="stat"><div class="stat-number">7+</div><div class="stat-label" data-key="stat1">Années d'Expérience</div></div><div class="stat"><div class="stat-number">3</div><div class="stat-label" data-key="stat2">Publications</div></div><div class="stat"><div class="stat-number">4</div><div class="stat-label" data-key="stat3">Diplômes</div></div></div>
             </div>
         </div>
     </section>
@@ -1441,7 +1432,6 @@
         }
         updateViewCounter();
 
-        // Compteur pour la section feedback
         function updateFeedbackCounter() {
             let feedbackCount = localStorage.getItem('feedback_submit_count');
             feedbackCount = feedbackCount === null ? 0 : parseInt(feedbackCount);
@@ -1461,16 +1451,19 @@
 
         const publicationsData = {
             fr: [
-                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Framework intégrant eBPF, TCN + GNN et apprentissage par renforcement.", fullDesc: "Cet article présente une nouvelle architecture de cybersécurité pour les environnements cloud basés sur Kubernetes. Le framework « Autonomic Shield » est un système immunitaire cognitif intégré directement dans le plan de contrôle de l'orchestrateur, fonctionnant via un cycle fermé de perception, prédiction et réponse autonome. Il utilise le sondage somatique via eBPF, un noyau prédictif combinant TCN et GNN, et un réflexe autonome basé sur l'apprentissage par renforcement.", meta: "Co-auteur : I.N. Trushkova | RSREU / STNO-2025" },
-                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Transformation de la cybersécurité via l'infrastructure intelligente.", fullDesc: "Cet article explore comment l'infrastructure intelligente transforme la cybersécurité en intégrant l'IA et l'automatisation au cœur de l'architecture réseau. Il examine les piliers de l'infrastructure intelligente : l'IA/ML pour la défense prédictive, SOAR pour la réponse automatisée, et les réseaux auto-réparateurs. L'article aborde également les défis de l'IA adverse, des faux positifs et de la gouvernance éthique.", meta: "Co-auteur : I.N. Trushkova | IX Forum STNO-2026" }
+                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Framework intégrant eBPF, TCN + GNN et apprentissage par renforcement.", fullDesc: "Cet article présente une nouvelle architecture de cybersécurité pour les environnements cloud basés sur Kubernetes. Le framework « Autonomic Shield » est un système immunitaire cognitif intégré directement dans le plan de contrôle de l'orchestrateur, fonctionnant via un cycle fermé de perception, prédiction et réponse autonome. Il utilise le sondage somatique via eBPF, un noyau prédictif combinant TCN et GNN, et un réflexe autonome basé sur l'apprentissage par renforcement.", meta: "Co-auteur : I.N. Trushkova | RSREU / STNO-2025", isNew: false },
+                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Transformation de la cybersécurité via l'infrastructure intelligente.", fullDesc: "Cet article explore comment l'infrastructure intelligente transforme la cybersécurité en intégrant l'IA et l'automatisation au cœur de l'architecture réseau. Il examine les piliers de l'infrastructure intelligente : l'IA/ML pour la défense prédictive, SOAR pour la réponse automatisée, et les réseaux auto-réparateurs. L'article aborde également les défis de l'IA adverse, des faux positifs et de la gouvernance éthique.", meta: "Co-auteur : I.N. Trushkova | IX Forum STNO-2026", isNew: false },
+                { year: "2026", title: "Риски безопасности и соответствия требованиям в облачных вычислениях: стратегии проактивного снижения рисков", shortDesc: "Анализ ключевых рисков безопасности в облачных средах и стратегии проактивного управления.", fullDesc: "В статье анализируются ключевые риски безопасности и нормативного соответствия в облачных средах: ошибочная настройка, компрометация учётных записей, небезопасные API, инсайдерские действия, нарушения регуляторных требований и уязвимости цепочки поставок. Показано, что традиционные реактивные подходы к защите не устраняют архитектурный раскол между динамической природой облачных платформ и статическими политиками безопасности. В качестве решения предлагается переход к модели проактивной киберустойчивости, интегрирующей концепции healthy self (эталонного поведения), биологической сложности (самоадаптация) и когнитивной иммунной системы. На основе ранее разработанного автором фреймворка «Автономный щит» (Autonomic Shield) обосновывается необходимость внедрения непрерывного мониторинга, архитектуры Zero Trust, автоматизированного реагирования и «инфраструктуры как кода». Ключевой вывод: эффективное управление рисками невозможно без чёткого понимания модели разделения ответственности и перехода от пассивного перекладывания обязанностей на провайдера к врождённой самозащите инфраструктуры.", meta: "Auteur : V.P. Fonkou | Sous la direction de : I.N. Trushkova | Soumis le : 20/04/2026", isNew: true }
             ],
             en: [
-                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Framework integrating eBPF, TCN + GNN and reinforcement learning.", fullDesc: "This paper presents a novel cybersecurity architecture for Kubernetes-based cloud environments. The 'Autonomic Shield' framework embodies a cognitive immune system integrated directly into the orchestrator's control plane, operating through a closed-loop cycle of perception, prediction, and autonomous response.", meta: "Co-author: I.N. Trushkova | RSREU / STNO-2025" },
-                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Cybersecurity transformation through intelligent infrastructure.", fullDesc: "This article explores how intelligent infrastructure is reshaping cybersecurity by integrating AI and automation into network architecture. It examines the pillars of intelligent infrastructure: AI/ML for predictive defense, SOAR for automated response, and self-healing networks.", meta: "Co-author: I.N. Trushkova | IX STNO-2026 Forum" }
+                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Framework integrating eBPF, TCN + GNN and reinforcement learning.", fullDesc: "This paper presents a novel cybersecurity architecture for Kubernetes-based cloud environments. The 'Autonomic Shield' framework embodies a cognitive immune system integrated directly into the orchestrator's control plane, operating through a closed-loop cycle of perception, prediction, and autonomous response.", meta: "Co-author: I.N. Trushkova | RSREU / STNO-2025", isNew: false },
+                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Cybersecurity transformation through intelligent infrastructure.", fullDesc: "This article explores how intelligent infrastructure is reshaping cybersecurity by integrating AI and automation into network architecture. It examines the pillars of intelligent infrastructure: AI/ML for predictive defense, SOAR for automated response, and self-healing networks.", meta: "Co-author: I.N. Trushkova | IX STNO-2026 Forum", isNew: false },
+                { year: "2026", title: "Security and Compliance Risks in Cloud Computing: Proactive Risk Mitigation Strategies", shortDesc: "Analysis of key security risks in cloud environments and proactive management strategies.", fullDesc: "This article analyzes key security and compliance risks in cloud environments: misconfiguration, account compromise, insecure APIs, insider threats, regulatory violations, and supply chain vulnerabilities. It demonstrates that traditional reactive approaches fail to bridge the architectural gap between the dynamic nature of cloud platforms and static security policies. The solution proposes a transition to a proactive cyber-resilience model integrating healthy self concepts, biological complexity (self-adaptation), and cognitive immune systems. Based on the author's previously developed 'Autonomic Shield' framework, the necessity of continuous monitoring, Zero Trust architecture, automated response, and 'infrastructure as code' is justified.", meta: "Author: V.P. Fonkou | Supervisor: I.N. Trushkova | Submitted: 20/04/2026", isNew: true }
             ],
             ru: [
-                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Фреймворк, интегрирующий eBPF, TCN + GNN и обучение с подкреплением.", fullDesc: "Эта статья представляет новую архитектуру кибербезопасности для облачных сред на базе Kubernetes. Фреймворк «Автономный щит» представляет собой когнитивную иммунную систему, интегрированную непосредственно в плоскость управления оркестратора.", meta: "Соавтор: И.Н. Трушкова | РГРТУ / СТНО-2025" },
-                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Трансформация кибербезопасности через интеллектуальную инфраструктуру.", fullDesc: "Эта статья исследует, как интеллектуальная инфраструктура трансформирует кибербезопасность, интегрируя ИИ и автоматизацию в сетевую архитектуру. Рассматриваются столпы интеллектуальной инфраструктуры: ИИ/МО для предиктивной защиты, SOAR для автоматизированного реагирования и самовосстанавливающиеся сети.", meta: "Соавтор: И.Н. Трушкова | IX Форум СТНО-2026" }
+                { year: "2025", title: "Autonomic Shield: Self-Defending Infrastructure", shortDesc: "Фреймворк, интегрирующий eBPF, TCN + GNN и обучение с подкреплением.", fullDesc: "Эта статья представляет новую архитектуру кибербезопасности для облачных сред на базе Kubernetes. Фреймворк «Автономный щит» представляет собой когнитивную иммунную систему, интегрированную непосредственно в плоскость управления оркестратора.", meta: "Соавтор: И.Н. Трушкова | РГРТУ / СТНО-2025", isNew: false },
+                { year: "2026", title: "The Autonomous Revolution: Transforming Cybersecurity Through Intelligent Infrastructure", shortDesc: "Трансформация кибербезопасности через интеллектуальную инфраструктуру.", fullDesc: "Эта статья исследует, как интеллектуальная инфраструктура трансформирует кибербезопасность, интегрируя ИИ и автоматизацию в сетевую архитектуру. Рассматриваются столпы интеллектуальной инфраструктуры: ИИ/МО для предиктивной защиты, SOAR для автоматизированного реагирования и самовосстанавливающиеся сети.", meta: "Соавтор: И.Н. Трушкова | IX Форум СТНО-2026", isNew: false },
+                { year: "2026", title: "Риски безопасности и соответствия требованиям в облачных вычислениях: стратегии проактивного снижения рисков", shortDesc: "Анализ ключевых рисков безопасности в облачных средах и стратегии проактивного управления.", fullDesc: "В статье анализируются ключевые риски безопасности и нормативного соответствия в облачных средах: ошибочная настройка, компрометация учётных записей, небезопасные API, инсайдерские действия, нарушения регуляторных требований и уязвимости цепочки поставок. Показано, что традиционные реактивные подходы к защите не устраняют архитектурный раскол между динамической природой облачных платформ и статическими политиками безопасности. В качестве решения предлагается переход к модели проактивной киберустойчивости, интегрирующей концепции healthy self (эталонного поведения), биологической сложности (самоадаптация) и когнитивной иммунной системы. На основе ранее разработанного автором фреймворка «Автономный щит» (Autonomic Shield) обосновывается необходимость внедрения непрерывного мониторинга, архитектуры Zero Trust, автоматизированного реагирования и «инфраструктуры как кода».", meta: "Автор: В.П. Фонку | Научный руководитель: И.Н. Трушкова | Сдана в печать: 20.04.2026", isNew: true }
             ]
         };
 
@@ -1489,10 +1482,10 @@
         function renderPublications(lang) {
             const data = publicationsData[lang];
             document.getElementById('pub-list').innerHTML = data.map((pub, idx) => `
-                <div class="pub-item">
+                <div class="pub-item ${pub.isNew ? 'pub-new' : ''}">
                     <div class="pub-year">${pub.year}</div>
                     <div class="pub-content">
-                        <h4>${pub.title}</h4>
+                        <h4>${pub.title} ${pub.isNew ? '<span class="badge-new">NOUVEAU</span>' : ''}</h4>
                         <div class="pub-short-desc">${pub.shortDesc}</div>
                         <div class="pub-full-desc" id="full-desc-${idx}">${pub.fullDesc}</div>
                         <button class="btn-readmore" onclick="toggleReadMore(this, ${idx})"><span>Lire plus</span> <span style="font-size:0.8rem;">▼</span></button>
