@@ -769,9 +769,12 @@
         .gallery-slide img {
             width: 100%;
             height: auto;  /* ✅ Maintains original proportions */
-            object-fit: cover;
-            display: block;
+            object-fit: contain;  /* ✅ Shows entire image, no stretching/cropping */
+            background: var(--secondary);  /* Fills empty space */
         } 
+        .gallery-container {
+            max-height: 600px;
+        }
 
         .slide-caption {
             position: absolute;
